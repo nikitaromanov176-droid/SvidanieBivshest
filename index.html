@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для Леры 🤍</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#5d4960}
+body{
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 10% 15%,rgba(255,255,255,.95),transparent 27%),
+    radial-gradient(circle at 90% 12%,rgba(231,209,246,.8),transparent 30%),
+    radial-gradient(circle at 50% 100%,rgba(255,214,229,.8),transparent 36%),
+    linear-gradient(135deg,#f9e1ec,#f3e8f8 50%,#eee5fb);
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent,rgba(255,255,255,.22),transparent);animation:shine 7s linear infinite}
+@keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+.petals{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.petal{position:absolute;top:-30px;width:12px;height:18px;border-radius:70% 30% 70% 30%;background:rgba(232,145,177,.55);animation:fall linear infinite}
+@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(650deg);opacity:0}}
+
+.app{position:relative;z-index:1;width:min(760px,100%);margin:auto;padding:20px 15px 45px}
+.page{display:none;min-height:calc(100vh - 65px);align-items:center;justify-content:center;animation:pageIn .55s ease}
+.page.active{display:flex}
+@keyframes pageIn{from{opacity:0;transform:translateX(35px) scale(.98)}to{opacity:1;transform:none}}
+
+.card{
+  width:100%;padding:clamp(28px,7vw,62px) clamp(19px,7vw,62px);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:34px;background:rgba(255,255,255,.48);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 30px 90px rgba(103,69,112,.13);
+  text-align:center;
+}
+.badge{display:inline-block;padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.72);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#a16d91}
+h1{margin:20px 0 14px;font-size:clamp(35px,8vw,67px);line-height:1.02;letter-spacing:-.045em;color:#5c455f}
+h2{margin:12px 0 12px;font-size:clamp(28px,6vw,43px);line-height:1.08;color:#5c455f}
+p{line-height:1.6;font-size:17px;color:#7a687b}
+.heart{font-size:64px;margin:24px 0 4px;animation:pulse 1.25s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.1)}}
+
+.progress{display:flex;justify-content:center;gap:7px;margin-bottom:20px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(125,91,124,.18);transition:.3s}
+.dot.on{width:24px;border-radius:10px;background:#c98cae}
+
+.options{display:grid;gap:12px;margin-top:25px}
+.option{
+  width:100%;padding:17px 18px;border:1px solid rgba(255,255,255,.9);
+  border-radius:20px;background:rgba(255,255,255,.72);color:#674f68;
+  font-size:17px;font-weight:750;cursor:pointer;
+  box-shadow:0 9px 25px rgba(120,78,119,.08);
+  transition:.22s;
+}
+.option:hover{transform:translateY(-3px);background:#fff;box-shadow:0 15px 30px rgba(120,78,119,.14)}
+.option.selected{background:linear-gradient(135deg,#d68eaf,#b78dd2);color:white;border-color:transparent;transform:scale(1.02)}
+.continue{
+  margin-top:20px;width:100%;padding:16px;border:0;border-radius:18px;
+  background:linear-gradient(135deg,#bd789c,#a87bc4);color:#fff;font-size:17px;font-weight:800;
+  cursor:pointer;box-shadow:0 12px 28px rgba(157,91,139,.25);transition:.2s
+}
+.continue:hover{transform:translateY(-2px)}
+.continue:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+.summary{
+  margin-top:22px;padding:17px;border-radius:20px;background:rgba(255,255,255,.65);
+  color:#755d72;font-size:15px
+}
+.summary b{color:#5f465f}
+
+.final-heart{font-size:74px;animation:pulse 1.15s infinite}
+.final-text{font-size:20px;margin:8px auto 25px}
+.small{font-size:13px;color:#9b8498;margin-top:20px}
+
+#confetti{position:fixed;inset:0;z-index:20;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="petals"></div>
+<canvas id="confetti"></canvas>
+
+<main class="app">
+
+<section class="page active" id="p1">
+  <div class="card">
+    <span class="badge">только для Леры 🤍</span>
+    <div class="heart">💗</div>
+    <h1>Лера, у меня есть к тебе один важный вопрос...</h1>
+    <p>Но сначала давай вместе придумаем наше идеальное свидание.</p>
+    <button class="continue" onclick="go(2)">Узнать вопрос →</button>
+  </div>
+</section>
+
+<section class="page" id="p2">
+  <div class="card">
+    <div class="progress"><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+    <span class="badge">вопрос №1</span>
+    <h2>Когда тебе будет удобнее? 📅</h2>
+    <p>Выбирай вариант, который тебе больше нравится.</p>
+    <div class="options" data-type="date">
+      <button class="option" onclick="pick(this,'date','Суббота')">🌸 Суббота</button>
+      <button class="option" onclick="pick(this,'date','Воскресенье')">🌷 Воскресенье</button>
+    </div>
+    <button class="continue" id="nextDate" disabled onclick="go(3)">Дальше →</button>
+  </div>
+</section>
+
+<section class="page" id="p3">
+  <div class="card">
+    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
+    <span class="badge">вопрос №2</span>
+    <h2>А во сколько? 🕐</h2>
+    <p>Можно не спешить — выбери удобное время.</p>
+    <div class="options" data-type="time">
+      <button class="option" onclick="pick(this,'time','16:00')">☀️ 16:00</button>
+      <button class="option" onclick="pick(this,'time','17:00')">✨ 17:00</button>
+      <button class="option" onclick="pick(this,'time','18:00')">🌙 18:00</button>
+    </div>
+    <button class="continue" id="nextTime" disabled onclick="go(4)">Дальше →</button>
+  </div>
+</section>
+
+<section class="page" id="p4">
+  <div class="card">
+    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></div>
+    <span class="badge">вопрос №3</span>
+    <h2>И куда отправимся? 📍</h2>
+    <p>Тут вообще можно выбрать настроение вечера.</p>
+    <div class="options" data-type="place">
+      <button class="option" onclick="pick(this,'place','Кафе ☕')">☕ Кафе</button>
+      <button class="option" onclick="pick(this,'place','Кино 🎬')">🎬 Кино</button>
+      <button class="option" onclick="pick(this,'place','Прогулка 🌸')">🌸 Прогулка</button>
+      <button class="option" onclick="pick(this,'place','По пивку 🍻')">🍻 По пивку</button>
+    </div>
+    <button class="continue" id="nextPlace" disabled onclick="go(5)">Посмотреть план →</button>
+  </div>
+</section>
+
+<section class="page" id="p5">
+  <div class="card">
+    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></div>
+    <span class="badge">почти всё 🤍</span>
+    <h2>Получается вот такой план...</h2>
+    <div class="summary" id="summary"></div>
+    <p>Остался только один-единственный вопрос.</p>
+    <button class="continue" onclick="go(6)">И последний вопрос →</button>
+  </div>
+</section>
+
+<section class="page" id="p6">
+  <div class="card">
+    <div class="final-heart">💗</div>
+    <span class="badge">самое главное</span>
+    <h2>Ты пойдешь со мной?</h2>
+    <p class="final-text">Все остальные решения ты уже приняла 😌</p>
+    <div class="options">
+      <button class="option" onclick="finish()">Да 🤍</button>
+      <button class="option" onclick="finish()">КОНЕЧНО 😌</button>
+    </div>
+    <div id="final" style="display:none;margin-top:22px">
+      <div class="summary"><b style="font-size:25px">НАРМАЛДАКИ 🤍</b><br><br><span id="finalPlan"></span></div>
+    </div>
+    <div class="small">Свидание официально запланировано ✨</div>
+  </div>
+</section>
+
+</main>
+
+<script>
+// Твои авторизационные данные уже настроены:
+const TELEGRAM_BOT_TOKEN = '8706845386:AAGSfdS6ppV78S73MPnJPezdnMWG7NWpcec';
+const TELEGRAM_CHAT_ID = '1303462748';
+
+const state={date:'',time:'',place:''};
+
+function go(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('p'+n).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n===5){
+    document.getElementById('summary').innerHTML=
+      `📅 <b>${state.date}</b><br>🕐 <b>${state.time}</b><br>📍 <b>${state.place}</b>`;
+  }
+}
+
+function pick(btn,type,value){
+  btn.parentElement.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));
+  btn.classList.add('selected');
+  state[type]=value;
+  const id={date:'nextDate',time:'nextTime',place:'nextPlace'}[type];
+  document.getElementById(id).disabled=false;
+}
+
+async function finish(){
+  document.getElementById('final').style.display='block';
+  document.getElementById('finalPlan').innerHTML=
+    `📅 ${state.date} &nbsp; • &nbsp; 🕐 ${state.time}<br>📍 ${state.place}`;
+  
+  confetti();
+
+  const message = `🎉 *Лера согласилась на свидание!*\n\n` +
+                  `📅 *День:* ${state.date}\n` +
+                  `🕐 *Время:* ${state.time}\n` +
+                  `📍 *Место:* ${state.place}`;
+
+  try {
+    await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: message,
+        parse_mode: 'Markdown'
+      })
+    });
+  } catch (e) {
+    console.error('Ошибка отправки в Telegram:', e);
+  }
+}
+
+// Анимация падающих лепестков
+for(let i=0;i<28;i++){
+  const p=document.createElement('span');
+  p.className='petal';
+  p.style.left=Math.random()*100+'vw';
+  p.style.animationDuration=7+Math.random()*9+'s';
+  p.style.animationDelay=-Math.random()*12+'s';
+  p.style.setProperty('--drift',(Math.random()-.5)*220+'px');
+  document.querySelector('.petals').appendChild(p);
+}
+
+// Анимация конфетти
+const canvas=document.getElementById('confetti'),ctx=canvas.getContext('2d');
+let pieces=[],anim=false;
+function resize(){canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+addEventListener('resize',resize);resize();
+
+function confetti(){
+  pieces=[];
+  for(let i=0;i<170;i++)pieces.push({
+    x:innerWidth/2,y:innerHeight*.43,vx:(Math.random()-.5)*13,
+    vy:-Math.random()*13-4,s:5+Math.random()*7,r:Math.random()*6,vr:(Math.random()-.5)*.3,l:1
+  });
+  if(!anim)draw();
+}
+
+function draw(){
+  anim=true;ctx.clearRect(0,0,innerWidth,innerHeight);
+  pieces.forEach(p=>{
+    p.x+=p.vx;p.vy+=.22;p.y+=p.vy;p.r+=p.vr;p.l-=.006;
+    ctx.save();ctx.globalAlpha=Math.max(0,p.l);ctx.translate(p.x,p.y);ctx.rotate(p.r);
+    ctx.font=`${p.s*2}px serif`;ctx.fillStyle=['#d58aae','#b68bd0','#e3b76e','#fff','#c786a6'][Math.floor(Math.random()*5)];
+    ctx.fillText(Math.random()>.5?'♥':'✦',-p.s,p.s);ctx.restore();
+  });
+  pieces=pieces.filter(p=>p.y<innerHeight+30&&p.l>0);
+  if(pieces.length)requestAnimationFrame(draw);else{anim=false;ctx.clearRect(0,0,innerWidth,innerHeight)}
+}
+</script>
+</body>
+</html>
