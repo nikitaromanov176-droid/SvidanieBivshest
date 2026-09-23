@@ -56,8 +56,17 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
 }
 .option:hover{transform:translateY(-3px);background:#fff;box-shadow:0 15px 30px rgba(120,78,119,.14)}
 .option.selected{background:linear-gradient(135deg,#d68eaf,#b78dd2);color:white;border-color:transparent;transform:scale(1.02)}
+
+.btn-group{display:flex;gap:10px;margin-top:20px}
+.back-btn{
+  width:35%;padding:16px;border:1px solid rgba(255,255,255,.9);border-radius:18px;
+  background:rgba(255,255,255,.7);color:#7a687b;font-size:16px;font-weight:700;
+  cursor:pointer;transition:.2s;box-shadow:0 8px 20px rgba(120,78,119,.06);
+}
+.back-btn:hover{background:#fff;transform:translateY(-2px)}
+
 .continue{
-  margin-top:20px;width:100%;padding:16px;border:0;border-radius:18px;
+  flex:1;padding:16px;border:0;border-radius:18px;
   background:linear-gradient(135deg,#bd789c,#a87bc4);color:#fff;font-size:17px;font-weight:800;
   cursor:pointer;box-shadow:0 12px 28px rgba(157,91,139,.25);transition:.2s
 }
@@ -83,13 +92,14 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
 
 <main class="app">
 
+<!-- СТАРТ -->
 <section class="page active" id="p1">
   <div class="card">
     <span class="badge">только для Леры 🤍</span>
     <div class="heart">💗</div>
     <h1>Лера, у меня есть к тебе один важный вопрос...</h1>
     <p>Но сначала давай вместе придумаем наше идеальное свидание.</p>
-    <button class="continue" onclick="go(2)">Узнать вопрос →</button>
+    <button class="continue" style="width:100%" onclick="go(2)">Узнать вопрос →</button>
   </div>
 </section>
 
@@ -109,33 +119,18 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
       <button class="option" onclick="pick(this,'date','Суббота')">🎉 Суббота</button>
       <button class="option" onclick="pick(this,'date','Воскресенье')">☀️ Воскресенье</button>
     </div>
-    <button class="continue" id="nextDate" disabled onclick="go(3)">Дальше →</button>
+    <div class="btn-group">
+      <button class="back-btn" onclick="go(1)">← Назад</button>
+      <button class="continue" id="nextDate" disabled onclick="go(3)">Дальше →</button>
+    </div>
   </div>
 </section>
 
-<!-- 2. В ЧЕМ ОДЕТА -->
+<!-- 2. КУДА ПОЙДЕМ -->
 <section class="page" id="p3">
   <div class="card">
     <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
     <span class="badge">вопрос №2</span>
-    <h2>В чём ты будешь одета? 👗</h2>
-    <p>Выбери свой лук на вечер.</p>
-    <div class="options" data-type="outfit">
-      <button class="option" onclick="pick(this,'outfit','Грязная сучка')">🔥 Грязная сучка</button>
-      <button class="option" onclick="pick(this,'outfit','Милашкрр')">🥰 Милашкрр</button>
-      <button class="option" onclick="pick(this,'outfit','На домашнем')">🧸 На домашнем</button>
-      <button class="option" onclick="pick(this,'outfit','Алена Шишкова стайл')">💅 Алена Шишкова стайл</button>
-      <button class="option" onclick="pick(this,'outfit','Mommy')">👑 Mommy</button>
-    </div>
-    <button class="continue" id="nextOutfit" disabled onclick="go(4)">Дальше →</button>
-  </div>
-</section>
-
-<!-- 3. МЕСТО / ЧТО ДЕЛАЕМ -->
-<section class="page" id="p4">
-  <div class="card">
-    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
-    <span class="badge">вопрос №3</span>
     <h2>И чем займёмся? 📍</h2>
     <p>Выбери настроение вечера.</p>
     <div class="options" data-type="place">
@@ -148,11 +143,35 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
       <button class="option" onclick="pick(this,'place','Прогулка 🌸')">🌸 Прогулка</button>
       <button class="option" onclick="pick(this,'place','По пивку 🍻')">🍻 По пивку</button>
     </div>
-    <button class="continue" id="nextPlace" disabled onclick="go(5)">Дальше →</button>
+    <div class="btn-group">
+      <button class="back-btn" onclick="go(2)">← Назад</button>
+      <button class="continue" id="nextPlace" disabled onclick="go(4)">Дальше →</button>
+    </div>
   </div>
 </section>
 
-<!-- 4. ВРЕМЯ -->
+<!-- 3. В ЧЕМ ОДЕТА -->
+<section class="page" id="p4">
+  <div class="card">
+    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
+    <span class="badge">вопрос №3</span>
+    <h2>В чём ты будешь одета? 👗</h2>
+    <p>Выбери свой лук на вечер.</p>
+    <div class="options" data-type="outfit">
+      <button class="option" onclick="pick(this,'outfit','Грязная сучка')">🔥 Грязная сучка</button>
+      <button class="option" onclick="pick(this,'outfit','Милашкрр')">🥰 Милашкрр</button>
+      <button class="option" onclick="pick(this,'outfit','На домашнем')">🧸 На домашнем</button>
+      <button class="option" onclick="pick(this,'outfit','Алена Шишкова стайл')">💅 Алена Шишкова стайл</button>
+      <button class="option" onclick="pick(this,'outfit','Mommy')">👑 Mommy</button>
+    </div>
+    <div class="btn-group">
+      <button class="back-btn" onclick="go(3)">← Назад</button>
+      <button class="continue" id="nextOutfit" disabled onclick="go(5)">Дальше →</button>
+    </div>
+  </div>
+</section>
+
+<!-- 4. ВО СКОЛЬКО -->
 <section class="page" id="p5">
   <div class="card">
     <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></div>
@@ -173,7 +192,10 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
       <button class="option" onclick="pick(this,'time','23:00')">✨ 23:00</button>
       <button class="option" onclick="pick(this,'time','00:00')">🌌 00:00</button>
     </div>
-    <button class="continue" id="nextTime" disabled onclick="go(6)">Посмотреть план →</button>
+    <div class="btn-group">
+      <button class="back-btn" onclick="go(4)">← Назад</button>
+      <button class="continue" id="nextTime" disabled onclick="go(6)">Посмотреть план →</button>
+    </div>
   </div>
 </section>
 
@@ -185,7 +207,10 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
     <h2>Получается вот такой план...</h2>
     <div class="summary" id="summary"></div>
     <p>Остался только один-единственный вопрос.</p>
-    <button class="continue" onclick="go(7)">И последний вопрос →</button>
+    <div class="btn-group">
+      <button class="back-btn" onclick="go(5)">← Назад</button>
+      <button class="continue" onclick="go(7)">И последний вопрос →</button>
+    </div>
   </div>
 </section>
 
@@ -213,7 +238,7 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
 const TELEGRAM_BOT_TOKEN = '8706845386:AAGSfdS6ppV78S73MPnJPezdnMWG7NWpcec';
 const TELEGRAM_CHAT_ID = '1303462748';
 
-const state={date:'',outfit:'',place:'',time:''};
+const state={date:'',place:'',outfit:'',time:''};
 
 function go(n){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -222,8 +247,8 @@ function go(n){
   if(n===6){
     document.getElementById('summary').innerHTML=
       `📅 День: <b>${state.date}</b><br>` +
-      `👗 Лук: <b>${state.outfit}</b><br>` +
       `📍 План: <b>${state.place}</b><br>` +
+      `👗 Лук: <b>${state.outfit}</b><br>` +
       `🕐 Время: <b>${state.time}</b>`;
   }
 }
@@ -232,7 +257,7 @@ function pick(btn,type,value){
   btn.parentElement.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));
   btn.classList.add('selected');
   state[type]=value;
-  const id={date:'nextDate',outfit:'nextOutfit',place:'nextPlace',time:'nextTime'}[type];
+  const id={date:'nextDate',place:'nextPlace',outfit:'nextOutfit',time:'nextTime'}[type];
   if(id && document.getElementById(id)){
     document.getElementById(id).disabled=false;
   }
@@ -241,15 +266,15 @@ function pick(btn,type,value){
 async function finish(){
   document.getElementById('final').style.display='block';
   document.getElementById('finalPlan').innerHTML=
-    `📅 ${state.date} &nbsp; • &nbsp; 👗 ${state.outfit}<br>` +
-    `📍 ${state.place} &nbsp; • &nbsp; 🕐 ${state.time}`;
+    `📅 ${state.date} &nbsp; • &nbsp; 📍 ${state.place}<br>` +
+    `👗 ${state.outfit} &nbsp; • &nbsp; 🕐 ${state.time}`;
   
   confetti();
 
   const message = `🎉 *Лера согласилась на свидание!*\n\n` +
                   `📅 *День:* ${state.date}\n` +
-                  `👗 *Аутфит:* ${state.outfit}\n` +
                   `📍 *Что делаем:* ${state.place}\n` +
+                  `👗 *Аутфит:* ${state.outfit}\n` +
                   `🕐 *Время:* ${state.time}`;
 
   try {
