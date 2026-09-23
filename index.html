@@ -93,7 +93,7 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
   </div>
 </section>
 
-<!-- ДЕНЬ НЕДЕЛИ -->
+<!-- 1. ДЕНЬ НЕДЕЛИ -->
 <section class="page" id="p2">
   <div class="card">
     <div class="progress"><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
@@ -113,11 +113,50 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
   </div>
 </section>
 
-<!-- ВРЕМЯ -->
+<!-- 2. В ЧЕМ ОДЕТА -->
 <section class="page" id="p3">
   <div class="card">
     <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
     <span class="badge">вопрос №2</span>
+    <h2>В чём ты будешь одета? 👗</h2>
+    <p>Выбери свой лук на вечер.</p>
+    <div class="options" data-type="outfit">
+      <button class="option" onclick="pick(this,'outfit','Грязная сучка')">🔥 Грязная сучка</button>
+      <button class="option" onclick="pick(this,'outfit','Милашкрр')">🥰 Милашкрр</button>
+      <button class="option" onclick="pick(this,'outfit','На домашнем')">🧸 На домашнем</button>
+      <button class="option" onclick="pick(this,'outfit','Алена Шишкова стайл')">💅 Алена Шишкова стайл</button>
+      <button class="option" onclick="pick(this,'outfit','Mommy')">👑 Mommy</button>
+    </div>
+    <button class="continue" id="nextOutfit" disabled onclick="go(4)">Дальше →</button>
+  </div>
+</section>
+
+<!-- 3. МЕСТО / ЧТО ДЕЛАЕМ -->
+<section class="page" id="p4">
+  <div class="card">
+    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
+    <span class="badge">вопрос №3</span>
+    <h2>И чем займёмся? 📍</h2>
+    <p>Выбери настроение вечера.</p>
+    <div class="options" data-type="place">
+      <button class="option" onclick="pick(this,'place','Играть в роблокс 🎮')">🎮 Играть в роблокс</button>
+      <button class="option" onclick="pick(this,'place','Посмотрим фильм в дискорде 🎬')">🎬 Посмотрим фильм в дискорде</button>
+      <button class="option" onclick="pick(this,'place','Пообщаемся в дискорде 💬')">💬 Пообщаемся в дискорде</button>
+      <button class="option" onclick="pick(this,'place','Пойдем в ресторан 🍽️')">🍽️ Пойдем в ресторан</button>
+      <button class="option" onclick="pick(this,'place','Кафе ☕')">☕ Кафе</button>
+      <button class="option" onclick="pick(this,'place','Кино 🍿')">🍿 Кино</button>
+      <button class="option" onclick="pick(this,'place','Прогулка 🌸')">🌸 Прогулка</button>
+      <button class="option" onclick="pick(this,'place','По пивку 🍻')">🍻 По пивку</button>
+    </div>
+    <button class="continue" id="nextPlace" disabled onclick="go(5)">Дальше →</button>
+  </div>
+</section>
+
+<!-- 4. ВРЕМЯ -->
+<section class="page" id="p5">
+  <div class="card">
+    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></div>
+    <span class="badge">вопрос №4</span>
     <h2>А во сколько? 🕐</h2>
     <p>Можно не спешить — выбери удобное время.</p>
     <div class="options" data-type="time">
@@ -134,46 +173,7 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
       <button class="option" onclick="pick(this,'time','23:00')">✨ 23:00</button>
       <button class="option" onclick="pick(this,'time','00:00')">🌌 00:00</button>
     </div>
-    <button class="continue" id="nextTime" disabled onclick="go(4)">Дальше →</button>
-  </div>
-</section>
-
-<!-- В ЧЕМ ОДЕТА -->
-<section class="page" id="p4">
-  <div class="card">
-    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
-    <span class="badge">вопрос №3</span>
-    <h2>В чём ты будешь одета? 👗</h2>
-    <p>Выбери свой лук на вечер.</p>
-    <div class="options" data-type="outfit">
-      <button class="option" onclick="pick(this,'outfit','Грязная сучка')">🔥 Грязная сучка</button>
-      <button class="option" onclick="pick(this,'outfit','Милашкрр')">🥰 Милашкрр</button>
-      <button class="option" onclick="pick(this,'outfit','На домашнем')">🧸 На домашнем</button>
-      <button class="option" onclick="pick(this,'outfit','Алена Шишкова стайл')">💅 Алена Шишкова стайл</button>
-      <button class="option" onclick="pick(this,'outfit','Mommy')">👑 Mommy</button>
-    </div>
-    <button class="continue" id="nextOutfit" disabled onclick="go(5)">Дальше →</button>
-  </div>
-</section>
-
-<!-- МЕСТО / ЧТО ДЕЛАЕМ -->
-<section class="page" id="p5">
-  <div class="card">
-    <div class="progress"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></div>
-    <span class="badge">вопрос №4</span>
-    <h2>И чем займёмся? 📍</h2>
-    <p>Выбери настроение вечера.</p>
-    <div class="options" data-type="place">
-      <button class="option" onclick="pick(this,'place','Играть в роблокс 🎮')">🎮 Играть в роблокс</button>
-      <button class="option" onclick="pick(this,'place','Посмотрим фильм в дискорде 🎬')">🎬 Посмотрим фильм в дискорде</button>
-      <button class="option" onclick="pick(this,'place','Пообщаемся в дискорде 💬')">💬 Пообщаемся в дискорде</button>
-      <button class="option" onclick="pick(this,'place','Пойдем в ресторан 🍽️')">🍽️ Пойдем в ресторан</button>
-      <button class="option" onclick="pick(this,'place','Кафе ☕')">☕ Кафе</button>
-      <button class="option" onclick="pick(this,'place','Кино 🍿')">🍿 Кино</button>
-      <button class="option" onclick="pick(this,'place','Прогулка 🌸')">🌸 Прогулка</button>
-      <button class="option" onclick="pick(this,'place','По пивку 🍻')">🍻 По пивку</button>
-    </div>
-    <button class="continue" id="nextPlace" disabled onclick="go(6)">Посмотреть план →</button>
+    <button class="continue" id="nextTime" disabled onclick="go(6)">Посмотреть план →</button>
   </div>
 </section>
 
@@ -213,7 +213,7 @@ p{line-height:1.6;font-size:17px;color:#7a687b}
 const TELEGRAM_BOT_TOKEN = '8706845386:AAGSfdS6ppV78S73MPnJPezdnMWG7NWpcec';
 const TELEGRAM_CHAT_ID = '1303462748';
 
-const state={date:'',time:'',outfit:'',place:''};
+const state={date:'',outfit:'',place:'',time:''};
 
 function go(n){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -222,9 +222,9 @@ function go(n){
   if(n===6){
     document.getElementById('summary').innerHTML=
       `📅 День: <b>${state.date}</b><br>` +
-      `🕐 Время: <b>${state.time}</b><br>` +
       `👗 Лук: <b>${state.outfit}</b><br>` +
-      `📍 План: <b>${state.place}</b>`;
+      `📍 План: <b>${state.place}</b><br>` +
+      `🕐 Время: <b>${state.time}</b>`;
   }
 }
 
@@ -232,7 +232,7 @@ function pick(btn,type,value){
   btn.parentElement.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));
   btn.classList.add('selected');
   state[type]=value;
-  const id={date:'nextDate',time:'nextTime',outfit:'nextOutfit',place:'nextPlace'}[type];
+  const id={date:'nextDate',outfit:'nextOutfit',place:'nextPlace',time:'nextTime'}[type];
   if(id && document.getElementById(id)){
     document.getElementById(id).disabled=false;
   }
@@ -241,17 +241,16 @@ function pick(btn,type,value){
 async function finish(){
   document.getElementById('final').style.display='block';
   document.getElementById('finalPlan').innerHTML=
-    `📅 ${state.date} &nbsp; • &nbsp; 🕐 ${state.time}<br>` +
-    `👗 ${state.outfit}<br>` +
-    `📍 ${state.place}`;
+    `📅 ${state.date} &nbsp; • &nbsp; 👗 ${state.outfit}<br>` +
+    `📍 ${state.place} &nbsp; • &nbsp; 🕐 ${state.time}`;
   
   confetti();
 
   const message = `🎉 *Лера согласилась на свидание!*\n\n` +
                   `📅 *День:* ${state.date}\n` +
-                  `🕐 *Время:* ${state.time}\n` +
                   `👗 *Аутфит:* ${state.outfit}\n` +
-                  `📍 *Что делаем:* ${state.place}`;
+                  `📍 *Что делаем:* ${state.place}\n` +
+                  `🕐 *Время:* ${state.time}`;
 
   try {
     await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
